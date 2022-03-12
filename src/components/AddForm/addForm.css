@@ -1,0 +1,21 @@
+.inputChange{
+    width: 77%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.add-button{
+    width: 20%;
+    background-color: dodgerblue;
+    border-radius: 5%;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    height: 35px;
+    margin-left: 5px;
+}
+
+.add-button:hover {
+    background-color: blue;
+}

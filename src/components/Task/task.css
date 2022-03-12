@@ -1,0 +1,55 @@
+.Task {
+    display: flex;
+    margin-top: 2px;
+    font-size: 15px;
+}
+
+.info-wrapper {
+    display: flex;
+    width: 90%;
+
+}
+
+.info-wrapper:hover {
+
+}
+
+.delete-button {
+    width: 10%;
+
+}
+
+.task-text {
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #e5e8ef;
+}
+
+.task-text:hover {
+    background-color: #abb2c4;
+
+}
+
+.task-readiness {
+    width: 20%;
+    background-color: #abb2c4;
+    padding-left: 10px;
+}
+
+.task-readiness:hover {
+    background-color: #e5e8ef;
+
+}
+
+.delete-button {
+    background-color: dodgerblue;
+    border-radius: 5%;
+    color: white;
+    border: none;
+}
+
+.delete-button:hover {
+    background-color: #ef1a1a;
+}
+

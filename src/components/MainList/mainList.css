@@ -1,0 +1,26 @@
+.MainList{
+    text-align: left;
+    width: 40%;
+    flex-direction: column;
+    row-gap: 2px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 2%;
+    box-shadow: 5px 4px 15px -2px #888;
+    margin-left: 30%;
+    margin-top: 10%;
+}
+
+.headers{
+    display: flex;
+    margin-left: 5px;
+}
+
+.first-header{
+    width: 70%;
+}
+
+.second-header{
+    width: 30%;
+}
+
