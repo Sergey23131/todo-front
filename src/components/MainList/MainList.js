@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchTasks} from "../../redux/actions/actions";
 import {getTasks} from "../../services/task.service";
@@ -8,7 +8,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     Redirect
 } from "react-router-dom";
 import {AddForm} from "../AddForm/AddForm";
@@ -16,8 +15,6 @@ import {UpdateForm} from "../UpdateForm/UpdateForm";
 
 
 export function MainList() {
-    const [errors, setErrors] = useState('');
-
     const store = useSelector(state => {
         const {taskReducer} = state;
         return taskReducer
@@ -48,7 +45,7 @@ export function MainList() {
                         <h2 className={'second-header'}>Readiness</h2>
                     </div>
                     {
-                        tasks.map((value) => <div key={value.id}><Task info={value} /></div>)
+                        tasks.map((value) => <div key={value.id}><Task info={value}/></div>)
                     }
                 </div>
 

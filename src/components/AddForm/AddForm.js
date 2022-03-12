@@ -1,31 +1,18 @@
-import {MainList} from "../MainList/MainList";
-import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {createTask, updateTask} from "../../services/task.service";
+import {createTask} from "../../services/task.service";
 import './addForm.css'
 
 export function AddForm() {
-    const [errors, setErrors] = useState('');
 
     const dispatch = useDispatch();
 
     const addTaskfunc = (e) => {
-        try {
-            e.preventDefault();
+        e.preventDefault();
 
-            const task ={task:e.target.task.value}
+        const task = {task: e.target.task.value}
 
-            const addedTask = createTask(dispatch,{task});
+        createTask(dispatch, {task});
 
-            if (addedTask.message) {
-                throw new Error(addedTask.message)
-            } else {
-                setErrors('Something went wrong')
-            }
-
-        } catch (err) {
-            setErrors(err.message)
-        }
     };
 
     return (

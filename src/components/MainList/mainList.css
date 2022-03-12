@@ -1,4 +1,4 @@
-.MainList{
+.MainList {
     text-align: left;
     width: 40%;
     flex-direction: column;
@@ -11,16 +11,16 @@
     margin-top: 10%;
 }
 
-.headers{
+.headers {
     display: flex;
     margin-left: 5px;
 }
 
-.first-header{
+.first-header {
     width: 70%;
 }
 
-.second-header{
+.second-header {
     width: 30%;
 }
 

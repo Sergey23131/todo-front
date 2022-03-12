@@ -1,11 +1,7 @@
 import './task.css';
-import {useHistory} from "react-router";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
+    Link
+
 } from "react-router-dom";
 import {deleteTask, updateTask} from "../../services/task.service";
 import {useDispatch} from "react-redux";
@@ -19,17 +15,17 @@ export function Task({info}) {
         deleteTask(dispatch, {id})
     }
 
-    const readinessChange = ()=>{
-        if(info.readiness ==="Done"){
+    const readinessChange = () => {
+        if (info.readiness === "Done") {
 
-            const task = { readiness: 'In process'}
+            const task = {readiness: 'In process'}
 
-            updateTask(dispatch,{task, id});
+            updateTask(dispatch, {task, id});
 
-        }else if(info.readiness ==="In process"){
+        } else if (info.readiness === "In process") {
 
-            const task = { readiness: 'Done'}
-            updateTask(dispatch,{task, id});
+            const task = {readiness: 'Done'}
+            updateTask(dispatch, {task, id});
         }
     }
 

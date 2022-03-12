@@ -12,8 +12,6 @@ import {useHistory} from "react-router";
 import './updateForm.css'
 
 export function UpdateForm({location:state}) {
-    const [errors, setErrors] = useState('');
-
     const dispatch = useDispatch();
     const history=useHistory();
 
@@ -21,24 +19,14 @@ export function UpdateForm({location:state}) {
     const inputTask = state.state.task
 
     const updateTaskfunc = (e) => {
-        try {
             e.preventDefault();
 
             const task ={task:e.target.task.value}
 
-            const updatedTask = updateTask(dispatch,{task, id});
-
-            if (updatedTask.message) {
-                throw new Error(updatedTask.message)
-            } else {
-                setErrors('Something went wrong')
-            }
+            updateTask(dispatch,{task, id});
 
             history.push('/addForm')
 
-        } catch (err) {
-            setErrors(err.message)
-        }
     };
 
 
