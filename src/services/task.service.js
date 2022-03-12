@@ -1,18 +1,15 @@
 import {fetchAddTask, fetchDeleteTask, fetchUpdateTask} from "../redux/actions/actions";
-import axios from "axios";
 
-const config = {baseURL: 'http://localhost:5000/list'}
-
-const axiosInstance = axios.create(config)
+const url = 'http://localhost:5000/list/'
 
 const getTasks = async () => {
-    const response = await fetch('http://localhost:5000/list')
+    const response = await fetch(url)
         .then(value => value.json())
     return response
 };
 
 const createTask = async (dispatch, {task}) => {
-    const response = await fetch('http://localhost:5000/list', {
+    const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(task),
         headers: {
@@ -24,7 +21,7 @@ const createTask = async (dispatch, {task}) => {
 };
 
 const updateTask = async (dispatch, {task, id}) => {
-    const response = await fetch(`http://localhost:5000/list/${id}`, {
+    const response = await fetch(url + id, {
         method: 'PUT',
         body: JSON.stringify(task),
         headers: {
@@ -36,33 +33,10 @@ const updateTask = async (dispatch, {task, id}) => {
 }
 
 const deleteTask = async (dispatch, {id}) => {
-    const response = await fetch(`http://localhost:5000/list/${id}`, {
+    const response = await fetch(url + id, {
         method: 'DELETE',
     }).then((value) => value.json())
     dispatch(fetchDeleteTask(response))
 };
 
 export {getTasks, deleteTask, updateTask, createTask}
-
-
-/*
-const config = {baseURL: 'http://localhost:5000/list'}
-
-const axiosInstance = axios.create(config)
-
-const getTasks = () => axiosInstance.get('')
-
-const createTask = (dispatch, {task}) => {
-    axiosInstance.post('', task)
-        .then((value) => dispatch(fetchAddTask(value)))
-}
-
-const updateTask = (dispatch, {task, id}) => {
-    axiosInstance.post('/' + {id}, task)
-        .then((value) => dispatch(fetchUpdateTask(value)))
-}
-
-const deleteTask = (dispatch, {id}) => {
-    axiosInstance.post('' + {id})
-        .then((value) => dispatch(fetchDeleteTask(value)))
-}*/
