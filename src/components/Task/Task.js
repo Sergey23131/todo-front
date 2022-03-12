@@ -22,13 +22,14 @@ export function Task({info}) {
     const readinessChange = ()=>{
         if(info.readiness ==="Done"){
 
-            const readiness = { readiness: 'In process'}
+            const task = { readiness: 'In process'}
 
-            const updatedreadiness = updateTask(dispatch,{readiness, id});
+            updateTask(dispatch,{task, id});
+
         }else if(info.readiness ==="In process"){
 
-            const readiness = { readiness: 'Done'}
-            updateTask(dispatch,{readiness, id});
+            const task = { readiness: 'Done'}
+            updateTask(dispatch,{task, id});
         }
     }
 
