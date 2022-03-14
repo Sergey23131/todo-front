@@ -1,42 +1,29 @@
 import {fetchAddTask, fetchDeleteTask, fetchUpdateTask} from "../redux/actions/actions";
+import axios from "axios";
 
-const url = 'http://localhost:5000/list/'
+export const AXIOS = axios.create({
+    baseURL: 'http://localhost:5000/list/',
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    }
+})
 
-const getTasks = async () => {
-    const response = await fetch(url)
-        .then(value => value.json())
-    return response
-};
+const getTasks = () => AXIOS.get('').then(value => value.data)
 
 const createTask = async (dispatch, {task}) => {
-    const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(task),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((value) => value.json())
-    dispatch(fetchAddTask(response))
-};
+    const {data} = await AXIOS.post('', task) || {};
+    dispatch(fetchAddTask(data))
+}
 
 const updateTask = async (dispatch, {task, id}) => {
-    const response = await fetch(url + id, {
-        method: 'PUT',
-        body: JSON.stringify(task),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((value) => value.json())
-    dispatch(fetchUpdateTask(response))
+    const {data} = await AXIOS.put('' + id, task) || {};
+    dispatch(fetchUpdateTask(data))
 }
 
 const deleteTask = async (dispatch, {id}) => {
-    const response = await fetch(url + id, {
-        method: 'DELETE',
-    }).then((value) => value.json())
-    dispatch(fetchDeleteTask(response))
-};
+    const {data} = await AXIOS.delete('' + id) || {};
+    dispatch(fetchDeleteTask(data))
+}
+
 
 export {getTasks, deleteTask, updateTask, createTask}
