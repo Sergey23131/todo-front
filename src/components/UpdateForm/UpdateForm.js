@@ -1,12 +1,4 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
-} from "react-router-dom";
 import {updateTask} from "../../services/task.service";
-import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router";
 import './updateForm.css'
@@ -28,7 +20,6 @@ export function UpdateForm({location:state}) {
             history.push('/addForm')
 
     };
-
 
     return (
         <div className="UpdateForm">
